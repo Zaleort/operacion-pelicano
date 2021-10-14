@@ -1,29 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum TerrenoTipo {
-  Llanura,
-  Bosque,
-  Colina,
-  Montana,
-  Rio
-}
-
-public enum RecursoTipo {
-  Ninguno,
-  Metal,
-  Energia
-}
-
-public class Casilla : MonoBehaviour {
-  [SerializeField] private TerrenoTipo _terreno;
+public class Casilla : MonoBehaviour
+{
+  [SerializeField] private TerrenoEnum _terreno;
   [SerializeField] private Edificio _edificio;
   [SerializeField] private Unidad _unidad;
-  [SerializeField] private RecursoTipo _recurso;
-  [SerializeField] private int _posicion;
+  [SerializeField] private RecursoEnum _recurso;
+  [SerializeField] private (int, int) _posicion;
 
-  public Casilla(TerrenoTipo terreno, Unidad unidad, Edificio edificio, RecursoTipo recurso, int posicion) {
+  public Casilla(TerrenoEnum terreno, Unidad unidad, Edificio edificio, RecursoEnum recurso, (int, int) posicion)
+  {
     _terreno = terreno;
     _unidad = unidad;
     _edificio = edificio;
@@ -31,28 +17,32 @@ public class Casilla : MonoBehaviour {
     _posicion = posicion;
   }
 
-  public TerrenoTipo Terreno
+  public TerrenoEnum Terreno
   { get; set; }
 
-  public Unidad Unidad {
+  public Unidad Unidad
+  {
     get { return _unidad; }
-    set { 
+    set
+    {
       _unidad = value;
       _unidad.Posicion = _posicion;
     }
   }
 
-  public RecursoTipo Recurso
+  public RecursoEnum Recurso
   { get; set; }
 
-  public Edificio Edificio {
-    get => _edificio;
-    set {
+  public Edificio Edificio
+  {
+    get { return _edificio; }
+    set
+    {
       _edificio = value;
       _edificio.Posicion = _posicion;
     }
   }
 
-  public int Posicion
+  public (int, int) Posicion
   { get; set; }
 }

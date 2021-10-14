@@ -1,25 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public enum EdificioTipo {
-  Ninguno,
-  Nexo,
-  Construccion,
-  Recoleccion,
-  Investigacion,
-  Defensa,
-}
-
-public class Edificio : MonoBehaviour {
-  [SerializeField] private EdificioTipo[] _tipo;
+public class Edificio : MonoBehaviour
+{
+  [SerializeField] private EdificioEnum[] _tipo;
   [SerializeField] private int _vida;
   [SerializeField] private int _fuerza;
   [SerializeField] private string _nombre;
-  [SerializeField] private int _posicion;
+  [SerializeField] private (int, int) _posicion;
   [SerializeField] private int _distancia;
 
-  public Edificio(EdificioTipo[] tipo, int vida, int fuerza, string nombre, int posicion, int distancia) {
+  public Edificio(EdificioEnum[] tipo, int vida, int fuerza, string nombre, (int, int) posicion, int distancia)
+  {
     _tipo = tipo;
     _vida = vida;
     _fuerza = fuerza;
@@ -28,7 +19,7 @@ public class Edificio : MonoBehaviour {
     _distancia = distancia;
   }
 
-  public EdificioTipo Tipo
+  public EdificioEnum[] Tipo
   { get; set; }
 
   public int Vida
@@ -43,6 +34,6 @@ public class Edificio : MonoBehaviour {
   public int Distancia
   { get; set; }
 
-  public int Posicion
+  public (int, int) Posicion
   { get; set; }
 }
